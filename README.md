@@ -1,4 +1,4 @@
-# Magic Camera
+﻿# Magic Camera
 
 Take photos with your virtual characters.
 
@@ -17,14 +17,14 @@ standing there.
 | | |
 |---|---|
 | **Version** | 1.0 |
-| **Released** | 2026-09-29 |
-| **Size** | 103.5 MB (108,545,098 bytes) |
+| **Released** | 2026-09-30 |
+| **Size** | 103.52 MB (108,545,098 bytes) |
 | **SHA-256** | `062be1e954dd54643d4f417681cb654d79f1acf704f4d99c6e20833853f4f5f0` |
 | **Requires** | Android 8.0 (API 26) or later |
-| **Download** | [MagicCamera-1.0.apk](https://github.com/OWNER/REPO/releases/latest/download/MagicCamera-1.0.apk) |
+| **Download** | [MagicCamera-1.0.apk](https://github.com/void-soul/magic-camera-releases/releases/latest/download/MagicCamera-1.0.apk) |
 <!-- END:release-info -->
 
-> ⚠️ `OWNER/REPO` 是占位符 —— 建好公开仓库后请替换（发布脚本会提示）。
+> ⚠️ `void-soul/magic-camera-releases` 是占位符 —— 建好公开仓库后请替换（发布脚本会提示）。
 
 **Install**: download the APK, then allow "install unknown apps" for the browser or file manager
 that downloaded it. The APK is about 100 MB — a Wi-Fi connection is recommended.
@@ -103,3 +103,4 @@ See [`CHANGELOG.md`](CHANGELOG.md). Every release ships the APK as a GitHub Rele
 ---
 
 **Magic Camera · 1.0 · © 2026 aihow.work**
+
