@@ -1,0 +1,12 @@
+# 安装包不进 git —— 走 GitHub Release 附件(100 MB 级文件提交进历史会永久污染仓库)。
+*.apk
+*.aab
+*.zip
+*.part
+
+# 发布脚本的临时产物
+.tmp/
+
+# 系统
+.DS_Store
+Thumbs.db
