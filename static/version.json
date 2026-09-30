@@ -1,6 +1,6 @@
 ﻿{
-  "versionCode": 99,
-  "versionName": "9.9",
+  "versionCode": 1,
+  "versionName": "1.0",
   "url": "https://github.com/void-soul/magic-camera-releases/releases/latest/download/MagicCamera-1.0.apk",
   "sha256": "062be1e954dd54643d4f417681cb654d79f1acf704f4d99c6e20833853f4f5f0",
   "bytes": 108545098,
@@ -8,4 +8,5 @@
   "notes": "First public build.",
   "minSupported": 1
 }
+
 
