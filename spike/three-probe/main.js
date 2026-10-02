@@ -40,14 +40,22 @@ scene.add(box);
 // WebGL 环境信息
 const gl = renderer.getContext();
 const isV2 = renderer.capabilities.isWebGL2;
-set('ver', (isV2 ? 'WebGL2' : 'WebGL1(回退)') + ' · ' + gl.getParameter(gl.VERSION), isV2);
+let gpu = 'unknown';
 try {
   const dbg = gl.getExtension('WEBGL_debug_renderer_info');
-  set('gpu', dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : '(no debug ext)');
+  gpu = dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : '(no debug ext)';
 } catch (e) {
-  set('gpu', 'unknown');
+  gpu = 'unknown';
 }
+set('ver', (isV2 ? 'WebGL2' : 'WebGL1(回退)') + ' · ' + gl.getParameter(gl.VERSION), isV2);
+set('gpu', gpu);
 set('ua', navigator.userAgent);
+
+// 打日志:AGC 云测试是**全自动**的,报告里带日志与截图 —— 所以关键数据必须落进日志,
+// 这样即使没人手动操作,也能从报告判读"橙盒有没有出来"。
+// 一行一条便于 grep:`[probe] …`
+console.log('[probe] webgl=' + (isV2 ? 'WebGL2' : 'WebGL1')
+  + ' gpu=' + gpu + ' ua=' + navigator.userAgent);
 
 function resize() {
   const w = Math.max(1, window.innerWidth);
@@ -66,10 +74,15 @@ let last = performance.now();
   const now = performance.now();
   frames++;
   if (now - last >= 1000) {
-    set('fps', Math.round((frames * 1000) / (now - last)) + ' fps', true);
-    set('draw', 'tris=' + renderer.info.render.triangles + ' calls=' + renderer.info.render.calls,
-      renderer.info.render.calls > 0);
-    set('glerr', 'glErr=' + gl.getError());
+    const fps = Math.round((frames * 1000) / (now - last));
+    const tris = renderer.info.render.triangles;
+    const calls = renderer.info.render.calls;
+    const glErr = gl.getError();
+    set('fps', fps + ' fps', true);
+    set('draw', 'tris=' + tris + ' calls=' + calls, calls > 0);
+    set('glerr', 'glErr=' + glErr);
+    console.log('[probe] fps=' + fps + ' tris=' + tris + ' calls=' + calls + ' glErr=' + glErr
+      + ' 判定=橙盒' + (calls > 0 && glErr === 0 ? '应有(若截图中没有即失败)' : '异常'));
     frames = 0;
     last = now;
     resize();
